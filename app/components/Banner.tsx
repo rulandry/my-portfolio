@@ -117,20 +117,20 @@ export default function Banner() {
           </div>
         </div>
 
-        <div className="space-y-4 pt-10 sm:pt-12 text-center lg:text-left">
-          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug">
+        <div className="space-y-4 pt-8 sm:pt-10 lg:pt-12 text-center lg:text-left">
+          <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-4xl mx-auto lg:mx-0">
             I&apos;m a {displayedText}
             <span className="animate-pulse">|</span>
           </p>
 
-          <p className="text-base sm:text-lg lg:text-xl theme-muted tracking-wide flex flex-wrap items-center justify-center lg:justify-start gap-2">
+          <p className="text-sm sm:text-base lg:text-xl theme-muted tracking-wide flex flex-wrap items-center justify-center lg:justify-start gap-2">
             <span>Currently working in</span>
             <span className="text-blue-400 font-semibold">
               Azure and Microsoft cloud support
             </span>
           </p>
 
-          <p className="text-sm sm:text-base lg:text-lg theme-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+          <p className="text-sm sm:text-base lg:text-lg theme-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
             I have experience supporting Microsoft 365 environments, Windows
             users, and cloud-based services, with growing specialization in
             Microsoft Entra ID, Azure, AWS, and security-focused operations.

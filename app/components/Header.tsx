@@ -12,52 +12,33 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 theme-header backdrop-blur-sm border-b theme-border">
       <nav className="px-4 sm:px-6 py-4">
-        <div className="container mx-auto max-w-6xl flex items-center justify-between">
+        <div className="container mx-auto max-w-6xl flex items-center justify-between gap-3">
           <Link
             href="/"
-            className="text-lg sm:text-2xl font-bold hover:text-purple-400 transition-colors"
+            className="font-bold hover:text-purple-400 transition-colors max-w-[70%] sm:max-w-none"
             onClick={closeMenu}
           >
-            Landry | Technical Support Engineer L-2
+            <span className="block sm:hidden text-xl leading-tight">
+              Landry
+            </span>
+            <span className="hidden sm:block text-lg md:text-2xl">
+              Landry | Technical Support Engineer L-2
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
             <ul className="flex items-center gap-8 list-none m-0 p-0">
-              <li>
-                <Link href="#home" className="hover:text-purple-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" className="hover:text-purple-400 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="#skills" className="hover:text-purple-400 transition-colors">
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link href="#experience" className="hover:text-purple-400 transition-colors">
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link href="#projects" className="hover:text-purple-400 transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" className="hover:text-purple-400 transition-colors">
-                  Contact Me
-                </Link>
-              </li>
+              <li><Link href="#home" className="hover:text-purple-400 transition-colors">Home</Link></li>
+              <li><Link href="#about" className="hover:text-purple-400 transition-colors">About</Link></li>
+              <li><Link href="#skills" className="hover:text-purple-400 transition-colors">Skills</Link></li>
+              <li><Link href="#experience" className="hover:text-purple-400 transition-colors">Experience</Link></li>
+              <li><Link href="#projects" className="hover:text-purple-400 transition-colors">Projects</Link></li>
+              <li><Link href="#contact" className="hover:text-purple-400 transition-colors">Contact Me</Link></li>
             </ul>
             <ThemeToggle />
           </div>
 
-          <div className="md:hidden flex items-center gap-3">
+          <div className="md:hidden flex items-center gap-3 shrink-0">
             <ThemeToggle />
             <button
               type="button"
@@ -85,36 +66,12 @@ export default function Header() {
         {isOpen && (
           <div className="md:hidden mt-4 rounded-xl border theme-border theme-panel p-4">
             <ul className="flex flex-col gap-4">
-              <li>
-                <Link href="#home" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="#skills" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link href="#experience" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  Experience
-                </Link>
-              </li>
-              <li>
-                <Link href="#projects" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="#contact" onClick={closeMenu} className="hover:text-purple-400 transition-colors">
-                  Contact Me
-                </Link>
-              </li>
+              <li><Link href="#home" onClick={closeMenu} className="hover:text-purple-400 transition-colors">Home</Link></li>
+              <li><Link href="#about" onClick={closeMenu} className="hover:text-purple-400 transition-colors">About</Link></li>
+              <li><Link href="#skills" onClick={closeMenu} className="hover:text-purple-400 transition-colors">Skills</Link></li>
+              <li><Link href="#experience" onClick={closeMenu} className="hover:text-purple-400 transition-colors">Experience</Link></li>
+              <li><Link href="#projects" onClick={closeMenu} className="hover:text-purple-400 transition-colors">Projects</Link></li>
+              <li><Link href="#contact" onClick={closeMenu} className="hover:text-purple-400 transition-colors">Contact Me</Link></li>
             </ul>
           </div>
         )}
