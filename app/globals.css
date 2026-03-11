@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f7fb;
+  --foreground: #111827;
+  --muted: #4b5563;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --border: rgba(17, 24, 39, 0.1);
+  --header: rgba(255, 255, 255, 0.8);
+}
+
+.dark {
+  --background: #110720;
+  --foreground: #ffffff;
+  --muted: rgba(255, 255, 255, 0.78);
+  --panel: rgba(255, 255, 255, 0.05);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.1);
+  --header: rgba(17, 7, 32, 0.8);
+}
+
+@theme inline {
+  --font-sans: var(--font-poppins), sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.theme-panel {
+  background: var(--panel);
+}
+
+.theme-panel-strong {
+  background: var(--panel-strong);
+}
+
+.theme-border {
+  border-color: var(--border);
+}
+
+.theme-muted {
+  color: var(--muted);
+}
+
+.theme-header {
+  background: var(--header);
+}
