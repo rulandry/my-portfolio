@@ -46,7 +46,7 @@ export default function Banner() {
       className="min-h-screen flex items-center justify-center pt-24 sm:pt-28 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-10 sm:gap-10 lg:gap-16">
           <div className="flex justify-center lg:justify-end relative w-full lg:w-auto order-1 lg:order-2">
             <div className="relative">
               <div className="lg:hidden mb-4 text-center">
@@ -58,7 +58,7 @@ export default function Banner() {
                 </div>
               </div>
 
-              <div className="relative mx-auto w-44 sm:w-56 md:w-64 mb-6 sm:mb-8">
+              <div className="relative mx-auto w-40 sm:w-56 md:w-64 mt-2 sm:mt-0 mb-10 sm:mb-8">
                 <Image
                   src="/assets/lan.png"
                   alt="Landry Rugomoka portrait"
@@ -80,7 +80,7 @@ export default function Banner() {
             </div>
           </div>
 
-          <div className="flex-1 space-y-5 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
+          <div className="flex-1 space-y-5 sm:space-y-6 text-center lg:text-left order-2 lg:order-1 mt-2 sm:mt-0">
             <div className="hidden lg:inline-block relative">
               <p className="text-lg">
                 Hello! I Am{" "}
