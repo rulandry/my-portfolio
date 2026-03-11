@@ -46,7 +46,7 @@ export default function Banner() {
       className="min-h-screen flex items-center justify-center pt-24 sm:pt-28 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-16">
           <div className="flex justify-center lg:justify-end relative w-full lg:w-auto order-1 lg:order-2">
             <div className="relative">
               <div className="lg:hidden mb-4 text-center">
@@ -58,13 +58,14 @@ export default function Banner() {
                 </div>
               </div>
 
-              <div className="relative mx-auto w-44 sm:w-30 md:w-60"> 
+              <div className="relative mx-auto w-44 sm:w-56 md:w-64 mb-6 sm:mb-8">
                 <Image
-                 src="/assets/lan.png" 
-                 alt="Landry Rugomoka portrait" 
-                 width={300} height={300} 
-                 className="absolute inset-0 w-full h-auto" 
-                 priority 
+                  src="/assets/lan.png"
+                  alt="Landry Rugomoka portrait"
+                  width={300}
+                  height={300}
+                  className="absolute inset-0 w-full h-auto"
+                  priority
                 />
 
                 <Image
@@ -81,27 +82,22 @@ export default function Banner() {
 
           <div className="flex-1 space-y-5 sm:space-y-6 text-center lg:text-left order-2 lg:order-1">
             <div className="hidden lg:inline-block relative">
-             
-              <div style={{ bottom: 40, position: "relative" }}>
-                <p className="text-lg">
-                  Hello! My name is{" "}
-                  <span className="text-purple-400">Landry Rugomoka</span>
-                </p>
-              </div>
-              <div className="absolute -bottom-2 left-8 w-0 h-0 border-l-8 border-l-transparent border-r-8 border-r-transparent border-t-8 border-t-white/10"></div>
+              <p className="text-lg">
+                Hello! I Am{" "}
+                <span className="text-purple-400">Landry Rugomoka</span>
+              </p>
             </div>
 
             <div>
-              <p className="text-lg sm:text-xl lg:text-2xl theme-muted mb-3">
+              <p className="text-base sm:text-xl lg:text-2xl theme-muted mb-3">
                 An IT professional focused on
               </p>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl tracking-tight font-semibold leading-tight">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl tracking-tight font-semibold leading-tight">
                 Cloud support,
                 <br />
                 identity, and{" "}
                 <span className="relative inline-block">
-                 
                   <span className="relative bg-linear-to-r from-violet-600 via-violet-400 to-violet-600 bg-clip-text text-transparent">
                     security
                   </span>
@@ -109,7 +105,7 @@ export default function Banner() {
                 .
               </h1>
 
-              <p className="mt-4 text-sm sm:text-base lg:text-lg theme-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+              <p className="mt-4 text-sm sm:text-base lg:text-lg theme-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
                 I build my career around solving technical problems, improving
                 user experience, and growing in cloud and cybersecurity.
               </p>
