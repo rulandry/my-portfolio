@@ -9,64 +9,74 @@ interface SkillItem {
 
 const skills: SkillItem[] = [
   {
-    name: "Azure Administration",
+    name: "Azure",
     description:
-      "Microsoft Azure is a cloud computing platform that provides services for hosting applications, virtual machines, networking, storage, security, identity, monitoring, and many other enterprise cloud solutions.",
+      "Microsoft Azure is an enterprise cloud platform that provides infrastructure, networking, identity, compute, storage, monitoring, and security services used to build, host, manage, and scale modern cloud-based solutions.",
   },
   {
-    name: "Microsoft 365 Administration",
+    name: "Microsoft 365",
     description:
-      "Microsoft 365 is a cloud-based productivity platform that includes services such as Exchange Online, SharePoint Online, Teams, OneDrive, and Office apps. It helps organizations collaborate, communicate, and manage work securely.",
+      "Microsoft 365 is a cloud productivity ecosystem that combines communication, collaboration, document management, and administrative services across platforms such as Exchange Online, SharePoint Online, Teams, OneDrive, and Office applications.",
+  },
+  {
+    name: "Microsoft Entra ID",
+    description:
+      "Microsoft Entra ID is a cloud identity and access management platform used to manage authentication, authorization, single sign-on, conditional access, user lifecycle, and secure identity governance across modern enterprise environments.",
   },
   {
     name: "Windows Troubleshooting",
     description:
-      "Windows troubleshooting involves diagnosing and resolving operating system, user profile, update, performance, login, application, and connectivity issues to keep users productive and systems stable.",
+      "Windows troubleshooting involves systematic diagnosis and resolution of operating system, application, update, performance, authentication, and endpoint issues to restore usability, maintain productivity, and reduce operational disruption.",
+  },
+  {
+    name: "AWS",
+    description:
+      "Amazon Web Services is a large-scale cloud platform offering compute, networking, storage, databases, monitoring, identity, and security capabilities used to design resilient, scalable, and production-ready cloud environments.",
   },
   {
     name: "Python",
     description:
-      "Python is a versatile programming language used for automation, scripting, backend development, APIs, data handling, and security-related projects. It is known for being readable and efficient for practical development.",
+      "Python is a versatile programming language widely used for automation, scripting, backend services, APIs, tooling, data handling, and security-related workflows, making it highly valuable for practical engineering and operations work.",
   },
   {
     name: "FastAPI",
     description:
-      "FastAPI is a modern Python framework used for building fast and efficient APIs. It supports data validation, clean routing, automatic documentation, and is ideal for backend services like contact forms and application APIs.",
+      "FastAPI is a modern Python framework for building high-performance APIs with clear routing, strong validation, automatic documentation, and clean service architecture, making it well suited for production backend development.",
   },
   {
     name: "Next.js",
     description:
-      "Next.js is a React framework used for building modern web applications. It supports server-side rendering, routing, API integration, performance optimization, and is a strong choice for professional portfolio and production websites.",
+      "Next.js is a React framework used to build modern web applications with routing, server rendering, optimization, API integration, and deployment-ready architecture suitable for professional and scalable frontend solutions.",
   },
   {
     name: "Cloud Security",
     description:
-      "Cloud security focuses on protecting cloud environments, identities, applications, and data. It includes secure access, monitoring, threat detection, least privilege, identity controls, and security best practices.",
+      "Cloud security focuses on protecting cloud-hosted identities, workloads, applications, configurations, and data through secure design, access controls, monitoring, threat reduction, and strong operational security practices.",
   },
   {
     name: "Identity & Access Management",
     description:
-      "Identity and Access Management is the process of controlling who can access systems and resources. It includes authentication, authorization, MFA, role-based access, SSO, and lifecycle management of user identities.",
+      "Identity and Access Management is the discipline of controlling who can access systems, applications, and data through authentication, authorization, least privilege, role-based access, multifactor authentication, and lifecycle governance.",
   },
   {
-    name: "Exchange Online Administration",
+    name: "Exchange Online",
     description:
-      "Exchange Online is Microsoft’s cloud email platform. It provides mailbox hosting, mail flow management, security features, calendaring, and administrative controls for enterprise messaging environments.",
+      "Exchange Online is Microsoft’s enterprise cloud messaging platform that delivers mailbox services, mail flow management, calendaring, security controls, and administrative capabilities for business communication environments.",
   },
   {
-    name: "SharePoint Online Administration",
+    name: "SharePoint Online",
     description:
-      "SharePoint Online is a Microsoft 365 service used for document management, intranet collaboration, file sharing, and team content organization within cloud-based work environments.",
+      "SharePoint Online is a cloud-based collaboration and content management platform used for document control, intranet solutions, structured information sharing, and team-based productivity across enterprise organizations.",
   },
   {
-    name: "Microsoft Teams Administration",
+    name: "Teams",
     description:
-      "Microsoft Teams is a collaboration platform for meetings, chat, calling, teamwork, and app integration. It is widely used for communication and productivity in modern workplaces.",
+      "Microsoft Teams is a collaboration platform that supports messaging, meetings, calling, file sharing, and integrated teamwork, serving as a central communication layer in modern workplace environments.",
   },
   {
     name: "Technical Support",
     description:
-      "Technical support involves assisting users and organizations in diagnosing, resolving, and preventing technology issues while maintaining a strong focus on communication, problem solving, and service quality.",
+      "Technical support is the practice of diagnosing, resolving, and communicating solutions for system, application, and service issues while maintaining service quality, user confidence, and efficient operational outcomes.",
   },
 ];
 
@@ -99,10 +109,11 @@ export default function Skills() {
             Skills
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            Core technologies and areas of focus
+            Core Technologies and Professional Focus Areas
           </h2>
           <p className="theme-muted text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
-            Click on any skill to view a short explanation of what it is about.
+            Select a skill to view a concise explanation of its technical role
+            and relevance within modern IT, cloud, and security environments.
           </p>
         </div>
 

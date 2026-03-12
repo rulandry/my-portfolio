@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 
 interface ExperienceCard {
   id: number;
   title: string;
   description: string;
   icon: string;
-  link: string;
 }
 
 const experienceCards: ExperienceCard[] = [
@@ -14,33 +12,29 @@ const experienceCards: ExperienceCard[] = [
     id: 1,
     title: "Azure Support Engineer",
     description:
-      "Providing technical support for Azure-related issues, helping customers troubleshoot cloud service problems, investigate incidents, and maintain reliable solutions across Microsoft cloud environments.",
-    icon: "/cards/azure.webp",
-    link: "https://learn.microsoft.com/azure/",
+      "Provide technical support across Microsoft Azure environments by diagnosing service issues, analyzing incidents, validating platform behavior, and guiding customers toward stable, scalable, and operationally sound cloud solutions.",
+    icon: "/cards/card-1.png",
   },
   {
     id: 2,
     title: "Microsoft 365 Support Engineer",
     description:
-      "Supported administrators and users across Microsoft 365 services including Exchange Online, SharePoint Online, Teams, and Office, with a focus on tenant functionality, secure configurations, and service troubleshooting.",
-    icon: "/cards/admin.png",
-    link: "https://www.microsoft.com/microsoft-365",
+      "Support Microsoft 365 workloads including Exchange Online, SharePoint Online, Teams, and Office services, with focus on tenant functionality, service reliability, administrative troubleshooting, and secure configuration practices.",
+    icon: "/cards/card-2.png",
   },
   {
     id: 3,
     title: "Windows & End-User Support",
     description:
-      "Delivered user-focused technical support by troubleshooting Windows issues, resolving system and access problems, and helping users maintain productivity through effective issue diagnosis and communication.",
-    icon: "/cards/techsup.jpg",
-    link: "https://www.microsoft.com/windows/",
+      "Resolve Windows and user productivity issues through structured troubleshooting, system analysis, access restoration, client communication, and practical remediation that minimizes disruption and improves user experience.",
+    icon: "/cards/card-3.png",
   },
   {
     id: 4,
-    title: "Cloud Security & Identity Growth",
+    title: "Cloud Security & Identity Focus",
     description:
-      "Building hands-on knowledge in cybersecurity, cloud security, AWS, and identity management, with strong interest in SOC operations, Microsoft Entra ID, secure access, and modern cloud administration.",
-    icon: "/cards/sec.jpg",
-    link: "https://aws.amazon.com/",
+      "Actively building technical depth in cloud security, Microsoft Entra ID, identity and access management, AWS, and security operations, with strong interest in secure administration, access control, and modern defensive practices.",
+    icon: "/cards/card-4.png",
   },
 ];
 
@@ -49,7 +43,7 @@ export default function Experience() {
     <section id="experience" className="py-16 sm:py-20 px-4 sm:px-6">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-10 sm:mb-12 text-center">
-          Work Experience
+          Experience
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
@@ -73,18 +67,9 @@ export default function Experience() {
                   {card.title}
                 </h3>
 
-                <p className="theme-muted text-sm sm:text-base mb-4 leading-relaxed">
+                <p className="theme-muted text-sm sm:text-base leading-relaxed">
                   {card.description}
                 </p>
-
-                <Link
-                  href={card.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-400 hover:text-purple-300 font-medium text-sm sm:text-base transition-colors inline-block"
-                >
-                  LEARN MORE →
-                </Link>
               </div>
             </div>
           ))}
