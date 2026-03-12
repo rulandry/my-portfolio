@@ -59,48 +59,53 @@ export default function Footer() {
   };
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setStatus({ type: "", message: "" });
+  e.preventDefault();
+  setIsSubmitting(true);
+  setStatus({ type: "", message: "" });
 
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to send message.");
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       }
+    );
 
-      setStatus({
-        type: "success",
-        message: "Message sent successfully.",
-      });
+    const data = await response.json();
 
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        website: "",
-      });
-    } catch (error) {
-      setStatus({
-        type: "error",
-        message: "Something went wrong. Please try again.",
-      });
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
+    if (!response.ok) {
+      throw new Error(data.detail || data.message || "Failed to send message.");
     }
-  };
+
+    setStatus({
+      type: "success",
+      message: "Message sent successfully.",
+    });
+
+    setFormData({
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+      website: "",
+    });
+  } catch (error) {
+    setStatus({
+      type: "error",
+      message:
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+    });
+    console.error(error);
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <footer id="contact" className="py-10 sm:py-12 px-4 sm:px-6 border-t theme-border">
