@@ -18,6 +18,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",
         "https://my-portfolio-opal-ten-76.vercel.app",
+        "https://ruglan.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
