@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "My portfolio",
+  title: "Landry's portfolio",
   description:
     "Portfolio of Landry Rugomoka, an Azure Support Engineer with experience in Microsoft 365, Microsoft Entra ID, Windows support, cloud technologies, and security-focused operations.",
 };
