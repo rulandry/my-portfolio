@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
 const phoneNumber = "+250782150042";
+const emailAddress = "rulandry10@gmail.com";
 
 export default function Footer() {
   const [formData, setFormData] = useState({
@@ -15,12 +16,13 @@ export default function Footer() {
   });
 
   const [status, setStatus] = useState<{
-    type: "success" | "error" | "";
+    type: "success" | "error" | "info" | "";
     message: string;
   }>({ type: "", message: "" });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPhoneQr, setShowPhoneQr] = useState(false);
+  const [showContactNotice, setShowContactNotice] = useState(false);
 
   useEffect(() => {
     if (!status.message) return;
@@ -31,22 +33,23 @@ export default function Footer() {
   }, [status]);
 
   useEffect(() => {
-    if (!showPhoneQr) return;
-
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setShowPhoneQr(false);
+        setShowContactNotice(false);
       }
     };
 
-    document.addEventListener("keydown", handleEscape);
-    document.body.style.overflow = "hidden";
+    if (showPhoneQr || showContactNotice) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
     };
-  }, [showPhoneQr]);
+  }, [showPhoneQr, showContactNotice]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -57,36 +60,30 @@ export default function Footer() {
     }));
   };
 
-  const formatFastApiError = (detail: unknown): string => {
-    if (Array.isArray(detail)) {
-      return detail
-        .map((item) => {
-          if (
-            typeof item === "object" &&
-            item !== null &&
-            "loc" in item &&
-            "msg" in item
-          ) {
-            const field = Array.isArray((item as { loc?: unknown }).loc)
-              ? String((item as { loc: unknown[] }).loc.at(-1))
-              : "field";
-            const msg = String((item as { msg?: unknown }).msg ?? "Invalid value");
-            return `${field}: ${msg}`;
-          }
-          return JSON.stringify(item);
-        })
-        .join(" | ");
-    }
-
-    if (typeof detail === "string") {
-      return detail;
-    }
-
-    return "Failed to send message.";
-  };
-
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    // Temporary behavior:
+    // Instead of sending the message to the backend, we show a modal explaining
+    // that direct form messaging is temporarily unavailable on the current hosting setup.
+    setShowContactNotice(true);
+
+    // Optional: keep a small info status under the form as well.
+    setStatus({
+      type: "info",
+      message:
+        "Direct form sending is temporarily unavailable. Please use email or phone for now.",
+    });
+
+    // ------------------------------------------------------------------
+    // COMMENTED OUT ON PURPOSE
+    // The code below is the real backend submission logic.
+    // It sends the form data to your FastAPI backend API.
+    // We are keeping it here for later use when you upgrade hosting
+    // or switch to an email API service.
+    // ------------------------------------------------------------------
+
+    /*
     setIsSubmitting(true);
     setStatus({ type: "", message: "" });
 
@@ -106,7 +103,14 @@ export default function Footer() {
 
       if (!response.ok) {
         throw new Error(
-          formatFastApiError(data.detail || data.message || "Failed to send message.")
+          Array.isArray(data.detail)
+            ? data.detail
+                .map((item: { loc?: unknown[]; msg?: string }) => {
+                  const field = item?.loc?.[item.loc.length - 1] ?? "field";
+                  return `${field}: ${item.msg ?? "Invalid value"}`;
+                })
+                .join(" | ")
+            : data.detail || data.message || "Failed to send message."
         );
       }
 
@@ -134,6 +138,7 @@ export default function Footer() {
     } finally {
       setIsSubmitting(false);
     }
+    */
   };
 
   return (
@@ -153,7 +158,7 @@ export default function Footer() {
 
           <div className="space-y-3 flex flex-col items-center">
             <a
-              href="mailto:rulandry10@gmail.com"
+              href={`mailto:${emailAddress}`}
               className="flex items-center gap-3 text-sm sm:text-base text-purple-400 hover:text-purple-300 transition-colors break-all text-center"
             >
               <svg
@@ -174,7 +179,7 @@ export default function Footer() {
                   d="m22 8-10 7L2 8"
                 />
               </svg>
-              <span>rulandry10@gmail.com</span>
+              <span>{emailAddress}</span>
             </a>
 
             <button
@@ -274,6 +279,8 @@ export default function Footer() {
               className={`text-center text-sm px-4 py-3 rounded-xl border ${
                 status.type === "success"
                   ? "bg-green-500/10 border-green-500/30 text-green-400"
+                  : status.type === "info"
+                  ? "bg-yellow-500/10 border-yellow-500/30 text-yellow-300"
                   : "bg-red-500/10 border-red-500/30 text-red-400"
               }`}
             >
@@ -284,7 +291,7 @@ export default function Footer() {
 
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 sm:mt-12">
           <a
-            href="mailto:rulandry10@gmail.com"
+            href={`mailto:${emailAddress}`}
             className="group relative w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full theme-panel border theme-border hover:scale-105 transition-all"
             aria-label="Email"
           >
@@ -433,6 +440,56 @@ export default function Footer() {
             >
               Call Now
             </a>
+          </div>
+        </div>
+      )}
+
+      {showContactNotice && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 px-4 sm:px-6"
+          onClick={() => setShowContactNotice(false)}
+        >
+          <div
+            className="theme-panel-strong border theme-border rounded-2xl p-6 sm:p-7 max-w-lg w-full text-center relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setShowContactNotice(false)}
+              className="absolute top-3 right-3 theme-muted hover:text-current text-xl"
+              aria-label="Close notice modal"
+            >
+              ×
+            </button>
+
+            <h3 className="text-2xl sm:text-3xl font-semibold mb-4 text-purple-400">
+              Messaging temporarily unavailable
+            </h3>
+
+            <p className="theme-muted text-sm sm:text-base leading-relaxed mb-6">
+              Direct form sending is not available at the moment.
+              Please feel free to reach out directly by email or phone instead.
+            </p>
+
+            <div className="space-y-3 mb-6">
+              <a
+                href={`mailto:${emailAddress}`}
+                className="block w-full rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-medium px-5 py-3 transition-colors"
+              >
+                Email Me
+              </a>
+
+              <a
+                href={`tel:${phoneNumber}`}
+                className="block w-full rounded-xl theme-panel border theme-border px-5 py-3 hover:border-purple-400 transition-colors"
+              >
+                Call Me
+              </a>
+            </div>
+
+            <p className="text-xs sm:text-sm theme-muted">
+              This form submission logic is still in the code and can be re-enabled later.
+            </p>
           </div>
         </div>
       )}
