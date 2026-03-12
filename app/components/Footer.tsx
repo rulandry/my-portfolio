@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 
@@ -27,7 +26,7 @@ export default function Footer() {
     if (!status.message) return;
     const timeout = setTimeout(() => {
       setStatus({ type: "", message: "" });
-    }, 4000);
+    }, 5000);
     return () => clearTimeout(timeout);
   }, [status]);
 
@@ -58,54 +57,84 @@ export default function Footer() {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-  setStatus({ type: "", message: "" });
-
-  try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      throw new Error(data.detail || data.message || "Failed to send message.");
+  const formatFastApiError = (detail: unknown): string => {
+    if (Array.isArray(detail)) {
+      return detail
+        .map((item) => {
+          if (
+            typeof item === "object" &&
+            item !== null &&
+            "loc" in item &&
+            "msg" in item
+          ) {
+            const field = Array.isArray((item as { loc?: unknown }).loc)
+              ? String((item as { loc: unknown[] }).loc.at(-1))
+              : "field";
+            const msg = String((item as { msg?: unknown }).msg ?? "Invalid value");
+            return `${field}: ${msg}`;
+          }
+          return JSON.stringify(item);
+        })
+        .join(" | ");
     }
 
-    setStatus({
-      type: "success",
-      message: "Message sent successfully.",
-    });
+    if (typeof detail === "string") {
+      return detail;
+    }
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      website: "",
-    });
-  } catch (error) {
-    setStatus({
-      type: "error",
-      message:
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.",
-    });
-    console.error(error);
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    return "Failed to send message.";
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus({ type: "", message: "" });
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/contact`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          formatFastApiError(data.detail || data.message || "Failed to send message.")
+        );
+      }
+
+      setStatus({
+        type: "success",
+        message: "Message sent successfully.",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        website: "",
+      });
+    } catch (error) {
+      setStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+      });
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <footer id="contact" className="py-10 sm:py-12 px-4 sm:px-6 border-t theme-border">
@@ -193,6 +222,7 @@ export default function Footer() {
               value={formData.name}
               onChange={handleChange}
               required
+              minLength={2}
               className="w-full rounded-xl theme-panel border theme-border px-4 py-3 text-sm sm:text-base placeholder:text-gray-400 outline-none focus:border-purple-400"
             />
 
@@ -214,6 +244,7 @@ export default function Footer() {
             value={formData.subject}
             onChange={handleChange}
             required
+            minLength={3}
             className="w-full rounded-xl theme-panel border theme-border px-4 py-3 text-sm sm:text-base placeholder:text-gray-400 outline-none focus:border-purple-400"
           />
 
@@ -223,6 +254,7 @@ export default function Footer() {
             value={formData.message}
             onChange={handleChange}
             required
+            minLength={10}
             rows={6}
             className="w-full rounded-xl theme-panel border theme-border px-4 py-3 text-sm sm:text-base placeholder:text-gray-400 outline-none focus:border-purple-400 resize-none"
           />
@@ -251,7 +283,7 @@ export default function Footer() {
         </form>
 
         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 sm:mt-12">
-          <Link
+          <a
             href="mailto:rulandry10@gmail.com"
             className="group relative w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full theme-panel border theme-border hover:scale-105 transition-all"
             aria-label="Email"
@@ -277,7 +309,7 @@ export default function Footer() {
             <span className="pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/85 px-3 py-1 text-xs text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200">
               Send Email
             </span>
-          </Link>
+          </a>
 
           <button
             type="button"
@@ -303,7 +335,7 @@ export default function Footer() {
             </span>
           </button>
 
-          <Link
+          <a
             href="/Landry-Rugomoka-CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -324,9 +356,9 @@ export default function Footer() {
             <span className="pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/85 px-3 py-1 text-xs text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200">
               Download CV
             </span>
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="https://github.com/rulandry"
             target="_blank"
             rel="noopener noreferrer"
@@ -339,9 +371,9 @@ export default function Footer() {
             <span className="pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/85 px-3 py-1 text-xs text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200">
               View GitHub
             </span>
-          </Link>
+          </a>
 
-          <Link
+          <a
             href="https://www.linkedin.com/in/landry-rugomoka-374b37272"
             target="_blank"
             rel="noopener noreferrer"
@@ -354,7 +386,7 @@ export default function Footer() {
             <span className="pointer-events-none absolute -top-11 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-black/85 px-3 py-1 text-xs text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200">
               View LinkedIn
             </span>
-          </Link>
+          </a>
         </div>
 
         <div className="text-center mt-10 sm:mt-12 pt-6 sm:pt-8 border-t theme-border">
