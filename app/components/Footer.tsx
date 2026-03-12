@@ -488,7 +488,7 @@ export default function Footer() {
             </div>
 
             <p className="text-xs sm:text-sm theme-muted">
-              This form submission logic is still in the code and can be re-enabled later.
+              This form submission logic will be re-enabled later. Thank you!
             </p>
           </div>
         </div>
