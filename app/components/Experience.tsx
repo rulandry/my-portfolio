@@ -33,7 +33,7 @@ const experienceCards: ExperienceCard[] = [
     id: 4,
     title: "Cloud Security & Identity Focus",
     description:
-      "Actively building technical depth in cloud security, Microsoft Entra ID, identity and access management, AWS, and security operations, with strong interest in secure administration, access control, and modern defensive practices.",
+      "Actively building technical depth in cloud security, Microsoft Entra ID, identity and access management, and security operations, with strong interest in secure administration, access control, and modern defensive practices.",
     icon: "/cards/sec.jpg",
   },
 ];
