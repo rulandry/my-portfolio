@@ -1,53 +1,83 @@
-# Personal Developer Portfolio 🚀
+# Landry Portfolio 🚀
 
-[![Site preview](/public/assets/thumbnail.png)](https://figma-portfolio-ten.vercel.app/)
+Welcome to my personal portfolio project! This website showcases my background, projects, technical skills, and professional interests in Azure support, Microsoft 365, cloud technologies, identity management, and security-focused growth.
 
-Welcome to my developer portfolio! This project showcases my skills, projects, and experience as a Software Engineer and UI/UX Designer. Built with [Next.js](https://nextjs.org/), [TypeScript](https://www.typescriptlang.org/), and [Tailwind CSS](https://tailwindcss.com). It not only provides a visually appealing representation of my work but also ensures optimal performance. View the [live site](https://figma-portfolio-ten.vercel.app/).
+Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** backend, the portfolio is more than a static site — it includes a live contact form, theme switching, interactive skill explanations, and responsive design for desktop and mobile users.
 
-# Features 🎉
+## Live Project 🌍
 
-The whole [portfolio](https://figma-portfolio-ten.vercel.app/) is a React-based single page app built with Next.js in TypeScript, using only statically generated pages.
-
-- **Modern Design**: Beautiful, dark-themed UI designed in Figma with purple gradient accents
-- **Animated Typing Effect**: Dynamic text animation in the hero section that cycles through roles
-- **Responsive Layout**: Fully responsive design that works seamlessly on all devices
-- **Performance Optimized**: Built with Next.js 16 for optimal performance and SEO
-- **Project Showcase**: Featured projects section with detailed descriptions and links
-- **Smooth Animations**: Engaging user experience with smooth transitions and effects
-- **Analytics Integration**: Vercel Analytics for tracking website performance
-
-# Fonts ✍🏻
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load [Poppins](https://fonts.google.com/specimen/Poppins), a custom Google Font with multiple weights (300-900).
-
-# Project images 🖼️
-
-All project images live under `public/projects` and are referenced in the `Projects.tsx` component. The assets folder contains all icons, images, and other media files used throughout the portfolio.
-
-# ✨ Development
-
-```bash
-git clone git@github.com:ibrahimmemonn/Figma_Portfolio.git
-
-cd Figma_Portfolio/
-
-npm i
-
-npm run dev
-```
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-# 🚚 Deployment
-
-Every branch or Pull Request is automatically deployed by [Vercel](https://vercel.com/) with their GitHub integration, where the `main` branch is automatically aliased to [figma-portfolio-ten.vercel.app](https://figma-portfolio-ten.vercel.app/). A link to a preview deployment will appear under each Pull Request.
-
-# 🏛 Licenses
-
-© Copyright 2025 Ibrahim Memon
-
-Don't care if you fork & play with it, but you're not allowed to publish anything from it as a whole without my written permission. Also please be aware, the combination of typography, colors & layout makes up my brand identity. So please don't just clone everything, but rather do a remix!
+- **Frontend:** https://my-portfolio-opal-ten-76.vercel.app
+- **Backend API:** https://my-portfolio-api-nq3c.onrender.com
+- **Health Check:** https://my-portfolio-api-nq3c.onrender.com/api/health
 
 ---
 
-⭐ If you found this project helpful or interesting, please consider giving it a star!
+# Features 🎉
+
+This portfolio includes both a polished frontend and a working backend integration.
+
+- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
+- **Light & Dark Mode**: Theme toggle for better user experience
+- **Interactive Skills Section**: Clickable skills with centered modal explanations
+- **Project Showcase**: Featured personal projects with descriptions and technologies used
+- **Live Contact Form**: Connected to a FastAPI backend and Gmail delivery
+- **Phone QR Contact**: Scan-to-call modal for mobile convenience
+- **Accessible Footer Tooltips**: Hover and keyboard-focus labels for footer icons
+- **Modern UI**: Clean layout with a strong purple/dark visual identity
+- **Backend API Integration**: FastAPI-powered contact handling with validation and spam protection
+
+---
+
+# Tech Stack 🛠️
+
+## Frontend
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- next-themes
+- qrcode.react
+
+## Backend
+- FastAPI
+- Python
+- Uvicorn
+- Pydantic
+- Python Dotenv
+
+## Deployment
+- Vercel (Frontend)
+- Render (Backend)
+
+---
+
+# Main Sections 📚
+
+The portfolio currently includes:
+
+- **Hero Section**: Introduction, animated typing effect, and profile image
+- **About Me**: Overview of my background and career direction
+- **Skills**: Interactive skill list with explanations in a modal
+- **Experience**: Work experience and technical focus areas
+- **Projects**: Featured projects including Personal Vault App and Loan Tracker App
+- **Contact**: Working contact form, email link, CV download, phone QR, GitHub, and LinkedIn
+
+---
+
+# Featured Projects 💼
+
+## Personal Vault App
+A secure personal vault application designed to protect sensitive data through authentication, controlled access, and backend logic. This project reflects my interest in privacy, secure software design, and practical cybersecurity-focused development.
+
+## Loan Tracker App
+A practical application for tracking loans, balances, and payment records in an organized way. This project demonstrates my ability to build useful tools with Python and user-focused functionality.
+
+---
+
+# Development 💻
+
+## Clone the project
+
+```bash
+git clone https://github.com/rulandry/my-portfolio.git
+cd my-portfolio
