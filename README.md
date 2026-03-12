@@ -74,6 +74,14 @@ A practical application for tracking loans, balances, and payment records in an 
 
 ---
 
+# Contact Form Notes 📩
+
+The contact form is fully implemented in the frontend and connected to backend logic prepared for email delivery.
+
+At the moment, direct form-to-email sending is temporarily unavailable on the current free hosting setup because of outbound email restrictions on the backend hosting provider.
+
+As a temporary solution, the site displays a notice encouraging visitors to contact me directly by email or phone. The original backend submission logic is still preserved in the codebase and can be re-enabled later.
+
 # Development 💻
 
 ## Clone the project
