@@ -13,28 +13,28 @@ const experienceCards: ExperienceCard[] = [
     title: "Azure Support Engineer",
     description:
       "Provide technical support across Microsoft Azure environments by diagnosing service issues, analyzing incidents, validating platform behavior, and guiding customers toward stable, scalable, and operationally sound cloud solutions.",
-    icon: "/cards/card-1.png",
+    icon: "/cards/azure.webp",
   },
   {
     id: 2,
     title: "Microsoft 365 Support Engineer",
     description:
       "Support Microsoft 365 workloads including Exchange Online, SharePoint Online, Teams, and Office services, with focus on tenant functionality, service reliability, administrative troubleshooting, and secure configuration practices.",
-    icon: "/cards/card-2.png",
+    icon: "/cards/admin.png",
   },
   {
     id: 3,
     title: "Windows & End-User Support",
     description:
       "Resolve Windows and user productivity issues through structured troubleshooting, system analysis, access restoration, client communication, and practical remediation that minimizes disruption and improves user experience.",
-    icon: "/cards/card-3.png",
+    icon: "/cards/techsup.jpg",
   },
   {
     id: 4,
     title: "Cloud Security & Identity Focus",
     description:
       "Actively building technical depth in cloud security, Microsoft Entra ID, identity and access management, AWS, and security operations, with strong interest in secure administration, access control, and modern defensive practices.",
-    icon: "/cards/card-4.png",
+    icon: "/cards/sec.jpg",
   },
 ];
 
