@@ -17,7 +17,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
-        "https://your-vercel-app.vercel.app",
+        "https://my-portfolio-opal-ten-76.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -58,10 +58,10 @@ def create_contact_message(payload: ContactCreate, request: Request):
     client_ip = request.client.host if request.client else "unknown"
 
     if payload.website.strip():
-      return {
-          "status": "success",
-          "message": "Your message has been sent successfully.",
-      }
+        return {
+            "status": "success",
+            "message": "Your message has been sent successfully.",
+        }
 
     check_rate_limit(client_ip)
 
