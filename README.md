@@ -1,10 +1,10 @@
-# Landry Portfolio 🚀
+# Landry Portfolio
 
 Welcome to my personal portfolio project! This website showcases my background, projects, technical skills, and professional interests in Azure support, Microsoft 365, cloud technologies, identity management, and security-focused growth.
 
 Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** backend, the portfolio is more than a static site — it includes a live contact form, theme switching, interactive skill explanations, and responsive design for desktop and mobile users.
 
-## Live Project 🌍
+## Live Project
 
 - **Frontend:** https://my-portfolio-opal-ten-76.vercel.app
 - **Backend API:** https://my-portfolio-api-nq3c.onrender.com
@@ -12,7 +12,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** back
 
 ---
 
-# Features 🎉
+# Features
 
 This portfolio includes both a polished frontend and a working backend integration.
 
@@ -28,7 +28,7 @@ This portfolio includes both a polished frontend and a working backend integrati
 
 ---
 
-# Tech Stack 🛠️
+# Tech Stack
 
 ## Frontend
 - Next.js
@@ -51,7 +51,7 @@ This portfolio includes both a polished frontend and a working backend integrati
 
 ---
 
-# Main Sections 📚
+# Main Sections
 
 The portfolio currently includes:
 
@@ -64,7 +64,7 @@ The portfolio currently includes:
 
 ---
 
-# Featured Projects 💼
+# Featured Projects
 
 ## Personal Vault App
 A secure personal vault application designed to protect sensitive data through authentication, controlled access, and backend logic. This project reflects my interest in privacy, secure software design, and practical cybersecurity-focused development.
@@ -74,7 +74,7 @@ A practical application for tracking loans, balances, and payment records in an 
 
 ---
 
-# Contact Form Notes 📩
+# Contact Form Notes
 
 The contact form is fully implemented in the frontend and connected to backend logic prepared for email delivery.
 
@@ -82,7 +82,7 @@ At the moment, direct form-to-email sending is temporarily unavailable on the cu
 
 As a temporary solution, the site displays a notice encouraging visitors to contact me directly by email or phone. The original backend submission logic is still preserved in the codebase and can be re-enabled later.
 
-# Development 💻
+# Development
 
 ## Clone the project
 
