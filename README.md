@@ -72,7 +72,10 @@ At the moment, direct form-to-email sending is temporarily unavailable on the cu
 
 As a temporary solution, the site displays a notice encouraging visitors to contact me directly by email or phone. The original backend submission logic is still preserved in the codebase and can be re-enabled later.
 
-# Development
+## Disclaimer
+
+This project is intended for **learning, demonstration, and portfolio purposes**.
+Do not use it to store highly sensitive real-world secrets in production without additional security hardening, testing, and infrastructure controls.
 
 ## Clone the project
 
