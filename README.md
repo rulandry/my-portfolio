@@ -64,16 +64,6 @@ The portfolio currently includes:
 
 ---
 
-# Featured Projects
-
-## Personal Vault App
-A secure personal vault application designed to protect sensitive data through authentication, controlled access, and backend logic. This project reflects my interest in privacy, secure software design, and practical cybersecurity-focused development.
-
-## Loan Tracker App
-A practical application for tracking loans, balances, and payment records in an organized way. This project demonstrates my ability to build useful tools with Python and user-focused functionality.
-
----
-
 # Contact Form Notes
 
 The contact form is fully implemented in the frontend and connected to backend logic prepared for email delivery.
