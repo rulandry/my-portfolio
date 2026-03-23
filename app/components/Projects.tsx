@@ -46,14 +46,14 @@ const featuredProjects: Project[] = [
   },
   {
     id: 2,
-    title: "Loan Tracker App",
+    title: "LoanLux",
     description:
       "A practical application built to help track loans, payments, and remaining balances in a simple, clear, and organized way.",
     image: "/projects/loan.png",
     tags: ["Finance Tracking", "Payments", "Organization", "Personal Use"],
     details: {
       overview:
-        "The Loan Tracker App is designed to help a user keep a clear record of borrowed money, payments made, and the balance still remaining. It gives a simpler and more understandable way to monitor loan progress without relying on scattered notes or manual calculations.",
+        "LoanLux is designed to help a user keep a clear record of borrowed money, payments made, and the balance still remaining. It gives a simpler and more understandable way to monitor loan progress without relying on scattered notes or manual calculations.",
       audience:
         "This app is useful for individuals who want a straightforward way to manage loan records, follow payment progress, and stay aware of what has already been paid and what is still due.",
       problem:

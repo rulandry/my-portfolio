@@ -59,7 +59,7 @@ The portfolio currently includes:
 - **About Me**: Overview of my background and career direction
 - **Skills**: Interactive skill list with explanations in a modal
 - **Experience**: Work experience and technical focus areas
-- **Projects**: Featured projects including Personal Vault App and Loan Tracker App
+- **Projects**: Featured projects including Personal Vault App and LoanLux
 - **Contact**: Working contact form, email link, CV download, phone QR, GitHub, and LinkedIn
 
 ---
