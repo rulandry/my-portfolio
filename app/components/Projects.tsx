@@ -28,7 +28,7 @@ const featuredProjects: Project[] = [
     tags: ["Privacy", "Personal Records", "Secure Access", "Organization"],
     details: {
       overview:
-        "The Personal Vault App is a digital space designed to help a person keep important private information in one secure and organized place. Instead of storing sensitive details in scattered notes, documents, or memory, the app gives the user a single location where personal records can be managed more safely and more clearly.",
+        "The Personal Vault App is a secure file and data vault built with authenticated access, MFA support, encrypted storage, folder-based organization, file upload and download, access logs, and protected API access. It gives users a structured way to store sensitive personal files and records while keeping visibility, control, and security at the center of the experience.",
       audience:
         "This app is intended for individuals who want a safer and more organized way to manage private personal information such as important records, confidential notes, or details they do not want easily exposed.",
       problem:
