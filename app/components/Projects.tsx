@@ -53,7 +53,7 @@ const featuredProjects: Project[] = [
     tags: ["Finance Tracking", "Payments", "Organization", "Personal Use"],
     details: {
       overview:
-        "LoanLux is designed to help a user keep a clear record of borrowed money, payments made, and the balance still remaining. It gives a simpler and more understandable way to monitor loan progress without relying on scattered notes or manual calculations.",
+        "LoanLux is a secure loan management application built to help users track loans, record payments, monitor upcoming due dates, and keep a clearer view of repayment progress in one place. It combines private account access, optional MFA, exportable loan and payment records, activity history, deleted-item recovery, and admin oversight features to make financial tracking more organized, auditable, and easier to manage.",
       audience:
         "This app is useful for individuals who want a straightforward way to manage loan records, follow payment progress, and stay aware of what has already been paid and what is still due.",
       problem:
