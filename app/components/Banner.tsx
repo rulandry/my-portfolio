@@ -129,7 +129,7 @@ export default function Banner() {
           <p className="text-sm sm:text-base lg:text-lg theme-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed px-2 sm:px-0">
             I have experience supporting Microsoft 365 environments, Windows
             users, and cloud-based services, with growing specialization in
-            Microsoft Entra ID, Azure, AWS, and security-focused operations.
+            Microsoft Entra ID, Azure, and security-focused operations.
           </p>
         </div>
       </div>

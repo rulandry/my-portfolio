@@ -29,11 +29,6 @@ const skills: SkillItem[] = [
       "Windows troubleshooting involves systematic diagnosis and resolution of operating system, application, update, performance, authentication, and endpoint issues to restore usability, maintain productivity, and reduce operational disruption.",
   },
   {
-    name: "AWS",
-    description:
-      "Amazon Web Services is a large-scale cloud platform offering compute, networking, storage, databases, monitoring, identity, and security capabilities used to design resilient, scalable, and production-ready cloud environments.",
-  },
-  {
     name: "Python",
     description:
       "Python is a versatile programming language widely used for automation, scripting, backend services, APIs, tooling, data handling, and security-related workflows, making it highly valuable for practical engineering and operations work.",

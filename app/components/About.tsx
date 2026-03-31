@@ -24,8 +24,8 @@ export default function About() {
             My background combines technical support, identity and access
             troubleshooting, and customer-focused problem solving. I enjoy
             helping organizations keep their environments secure, functional,
-            and efficient while continuing to grow in cloud engineering,
-            cybersecurity, and AWS.
+            and efficient while continuing to grow in cloud engineering and
+            cybersecurity.
           </p>
 
           <p className="text-sm sm:text-base lg:text-lg max-w-4xl mx-auto theme-muted leading-relaxed px-2 sm:px-0">
