@@ -8,6 +8,8 @@ interface Project {
   title: string;
   description: string;
   image: string;
+  projectUrl: string;
+  projectCtaLabel: string;
   tags: string[];
   details: {
     overview: string;
@@ -25,6 +27,8 @@ const featuredProjects: Project[] = [
     description:
       "A secure personal vault application designed to help keep important personal information private, organized, and accessible only to the right person.",
     image: "/projects/vlt.png",
+    projectUrl: "https://per-vault.vercel.app",
+    projectCtaLabel: "Open Live Project",
     tags: ["Privacy", "Personal Records", "Secure Access", "Organization"],
     details: {
       overview:
@@ -50,6 +54,8 @@ const featuredProjects: Project[] = [
     description:
       "A practical application built to help track loans, payments, and remaining balances in a simple, clear, and organized way.",
     image: "/projects/loan.png",
+    projectUrl: "https://github.com/rulandry/LoanLux",
+    projectCtaLabel: "View Project Repo",
     tags: ["Finance Tracking", "Payments", "Organization", "Personal Use"],
     details: {
       overview:
@@ -201,7 +207,7 @@ export default function Projects() {
               className="absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition flex items-center justify-center"
               aria-label="Close project details"
             >
-              <span className="text-2xl leading-none">×</span>
+              <span className="text-2xl leading-none">x</span>
             </button>
 
             <div className="mb-6">
@@ -263,6 +269,17 @@ export default function Projects() {
                 <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.value}
                 </p>
+              </div>
+
+              <div className="pt-2">
+                <a
+                  href={selectedProject.projectUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-purple-500 sm:text-base"
+                >
+                  {selectedProject.projectCtaLabel}
+                </a>
               </div>
             </div>
 

@@ -84,6 +84,5 @@ As a temporary solution, the site displays a notice encouraging visitors to cont
 
 ## Disclaimer
 
-This project is intended for **learning, demonstration, and portfolio purposes**.
-Do not use it to store highly sensitive real-world secrets in production without additional security hardening, testing, and infrastructure controls.
-
+This project is part of my **professional portfolio** and reflects my practical work in frontend development, backend integration, UI design, and building thoughtful, security-conscious applications.
+While it is suitable for showcasing real skills and project experience, it should still receive additional security hardening, testing, and infrastructure review before being used for highly sensitive production workloads.
