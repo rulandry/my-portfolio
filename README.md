@@ -6,9 +6,7 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** back
 
 ## Live Project
 
-- **Frontend:** https://my-portfolio-opal-ten-76.vercel.app
-- **Backend API:** https://my-portfolio-api-nq3c.onrender.com
-- **Health Check:** https://my-portfolio-api-nq3c.onrender.com/api/health
+- **Frontend:** https://ruglan.vercel.app
 
 ---
 
@@ -89,9 +87,3 @@ As a temporary solution, the site displays a notice encouraging visitors to cont
 This project is intended for **learning, demonstration, and portfolio purposes**.
 Do not use it to store highly sensitive real-world secrets in production without additional security hardening, testing, and infrastructure controls.
 
-## Clone the project
-
-```bash
-git clone https://github.com/rulandry/my-portfolio.git
-cd my-portfolio
-```
