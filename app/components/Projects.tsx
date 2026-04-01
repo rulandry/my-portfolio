@@ -54,8 +54,8 @@ const featuredProjects: Project[] = [
     description:
       "A practical application built to help track loans, payments, and remaining balances in a simple, clear, and organized way.",
     image: "/projects/loan.png",
-    projectUrl: "https://github.com/rulandry/LoanLux",
-    projectCtaLabel: "View Project Repo",
+    projectUrl: "https://loan-lux.vercel.app/",
+    projectCtaLabel: "Open Live Project",
     tags: ["Finance Tracking", "Payments", "Organization", "Personal Use"],
     details: {
       overview:
