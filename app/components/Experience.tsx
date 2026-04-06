@@ -17,9 +17,9 @@ const experienceCards: ExperienceCard[] = [
   },
   {
     id: 2,
-    title: "Microsoft 365 Support Engineer",
+    title: "Microsoft 365 Admin",
     description:
-      "Support Microsoft 365 workloads including Exchange Online, SharePoint Online, Teams, and Office services, with focus on tenant functionality, service reliability, administrative troubleshooting, and secure configuration practices.",
+      "Administer Microsoft 365 workloads including Exchange Online, SharePoint Online, Teams, and Office services, with focus on tenant management, service reliability, administrative troubleshooting, and secure configuration practices.",
     icon: "/cards/admin.png",
   },
   {

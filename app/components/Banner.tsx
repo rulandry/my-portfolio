@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const texts = [
   "Azure Support Engineer",
-  "Microsoft 365 Support Engineer",
+  "Microsoft 365 Admin",
   "Cloud & Security Enthusiast",
 ];
 
