@@ -76,9 +76,8 @@ export default function Footer() {
     });
 
     // ------------------------------------------------------------------
-    // COMMENTED OUT ON PURPOSE
     // The code below is the real backend submission logic.
-    // It sends the form data to your FastAPI backend API.
+    // It sends the form data to FastAPI backend API.
     // We are keeping it here for later use when you upgrade hosting
     // or switch to an email API service.
     // ------------------------------------------------------------------
