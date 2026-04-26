@@ -82,7 +82,7 @@ const skills: SkillItem[] = [
   {
     name: "Windows Troubleshooting",
     description:
-      "Diagnosing and resolving Windows OS issues, including system errors, performance degradation, and configuration problems.",
+      "Diagnosing and resolving Windows OS issues, including system errors, performance degradation, configuration problems, and user profile issues. Includes troubleshooting hardware peripherals such as printers, scanners, USB devices, and connectivity-related issues to ensure stable end-user environments.",
   },
   {
     name: "Technical Support",
@@ -132,7 +132,7 @@ const skills: SkillItem[] = [
   {
     name: "Authentication Protocols",
     description:
-      "Understanding OAuth, SAML, and OpenID Connect for secure authentication and authorization.",
+      "Understanding both cloud and on-premises authentication protocols used in enterprise environments. Includes OAuth, SAML, and OpenID Connect for modern identity federation, as well as Kerberos and NTLM for on-premises Active Directory authentication. Supports secure authentication, authorization, and identity trust across hybrid environments.",
   },
 ];
 
