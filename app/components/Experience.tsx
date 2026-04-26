@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 interface ExperienceCard {
   id: number;
@@ -46,11 +49,14 @@ export default function Experience() {
           Experience
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <InfiniteCarousel
+          ariaLabel="experience card"
+          itemWidthClassName="w-[280px] sm:w-[340px] lg:w-[420px]"
+        >
           {experienceCards.map((card) => (
             <div
               key={card.id}
-              className="theme-panel border theme-border rounded-xl p-5 sm:p-6 hover:shadow-2xl flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5 text-center sm:text-left"
+              className="theme-panel border theme-border rounded-xl p-5 sm:p-6 hover:shadow-2xl flex flex-col items-center gap-4 text-center h-full transition-shadow"
             >
               <div className="shrink-0">
                 <Image
@@ -73,7 +79,7 @@ export default function Experience() {
               </div>
             </div>
           ))}
-        </div>
+        </InfiniteCarousel>
       </div>
     </section>
   );

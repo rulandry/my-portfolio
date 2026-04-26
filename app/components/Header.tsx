@@ -14,7 +14,7 @@ function NavIcon({ children }: { children: React.ReactNode }) {
 
 function NavLabel({ children }: { children: React.ReactNode }) {
   return (
-    <span className="nav-label pointer-events-none absolute left-1/2 bottom-full mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border theme-border theme-panel px-2 py-1 text-xs opacity-0 shadow-lg transition-all duration-200 z-50">
+    <span className="nav-label pointer-events-none absolute left-1/2 top-[calc(100%+0.35rem)] -translate-x-1/2 whitespace-nowrap rounded-md px-2 py-1 text-xs opacity-0 shadow-lg transition-all duration-200 z-50">
       {children}
     </span>
   );
@@ -172,7 +172,10 @@ export default function Header() {
           }
 
           .nav-label {
-            transform: translateX(-50%) translateY(4px);
+            transform: translateX(-50%) translateY(-4px);
+            background: var(--panel-strong);
+            color: var(--foreground);
+            border: 1px solid var(--border);
           }
         `}</style>
       </nav>

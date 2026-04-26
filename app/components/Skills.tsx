@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import InfiniteCarousel from "./InfiniteCarousel";
 
 interface SkillItem {
   name: string;
@@ -11,67 +12,127 @@ const skills: SkillItem[] = [
   {
     name: "Azure",
     description:
-      "Microsoft Azure is an enterprise cloud platform that provides infrastructure, networking, identity, compute, storage, monitoring, and security services used to build, host, manage, and scale modern cloud-based solutions.",
+      "Hands-on experience deploying and managing Azure resources, including virtual machines, virtual networks, and storage. Skilled in configuring cloud infrastructure, applying basic security controls, and troubleshooting performance and connectivity issues.",
   },
   {
     name: "Microsoft 365",
     description:
-      "Microsoft 365 is a cloud productivity ecosystem that combines communication, collaboration, document management, and administrative services across platforms such as Exchange Online, SharePoint Online, Teams, OneDrive, and Office applications.",
+      "Experienced in administering Microsoft 365 services, supporting users, and resolving issues across Exchange Online, Teams, and SharePoint to ensure seamless collaboration and service availability.",
   },
   {
     name: "Microsoft Entra ID",
     description:
-      "Microsoft Entra ID is a cloud identity and access management platform used to manage authentication, authorization, single sign-on, conditional access, user lifecycle, and secure identity governance across modern enterprise environments.",
+      "Managing identities, authentication methods, and access controls within Entra ID. Experienced in user lifecycle management, role assignments, and resolving identity-related access challenges.",
   },
   {
-    name: "Windows Troubleshooting",
+    name: "Active Directory Domain Services (AD DS)",
     description:
-      "Windows troubleshooting involves systematic diagnosis and resolution of operating system, application, update, performance, authentication, and endpoint issues to restore usability, maintain productivity, and reduce operational disruption.",
+      "Administering on-premises Active Directory, including user and group management, OU structuring, and Group Policy configuration to enforce security and organizational policies.",
   },
   {
-    name: "Python",
+    name: "Hybrid Identity & Directory Synchronization (Entra ID ↔ AD DS)",
     description:
-      "Python is a versatile programming language widely used for automation, scripting, backend services, APIs, tooling, data handling, and security-related workflows, making it highly valuable for practical engineering and operations work.",
+      "Hands-on experience configuring and managing directory synchronization using Azure AD Connect. Ensuring identity consistency across environments, troubleshooting sync issues, and maintaining a secure hybrid identity infrastructure.",
   },
   {
-    name: "FastAPI",
+    name: "Cross-Tenant Synchronization (Microsoft Entra ID)",
     description:
-      "FastAPI is a modern Python framework for building high-performance APIs with clear routing, strong validation, automatic documentation, and clean service architecture, making it well suited for production backend development.",
+      "Configuring and managing cross-tenant synchronization to enable secure collaboration between organizations, including user provisioning, lifecycle management, and access control across tenants.",
   },
   {
-    name: "Next.js",
+    name: "Identity & Access Management (IAM)",
     description:
-      "Next.js is a React framework used to build modern web applications with routing, server rendering, optimization, API integration, and deployment-ready architecture suitable for professional and scalable frontend solutions.",
+      "Applying IAM principles such as role-based access control (RBAC) and least privilege to secure access to systems and data.",
+  },
+  {
+    name: "Multi-Factor Authentication (MFA)",
+    description:
+      "Implementing and troubleshooting MFA to enhance account security, reduce unauthorized access risks, and support secure authentication processes.",
+  },
+  {
+    name: "Conditional Access",
+    description:
+      "Designing and enforcing Conditional Access policies based on user risk, device compliance, and location to strengthen security posture.",
+  },
+  {
+    name: "Identity Troubleshooting (Hybrid Environments)",
+    description:
+      "Diagnosing and resolving identity and synchronization issues, including login failures, sync errors, and access inconsistencies between AD DS and Entra ID.",
   },
   {
     name: "Cloud Security",
     description:
-      "Cloud security focuses on protecting cloud-hosted identities, workloads, applications, configurations, and data through secure design, access controls, monitoring, threat reduction, and strong operational security practices.",
+      "Applying cloud security best practices, including identity protection, secure configurations, and minimizing potential attack surfaces in Microsoft cloud environments.",
   },
   {
-    name: "Identity & Access Management",
+    name: "Security Monitoring & Incident Response",
     description:
-      "Identity and Access Management is the discipline of controlling who can access systems, applications, and data through authentication, authorization, least privilege, role-based access, multifactor authentication, and lifecycle governance.",
+      "Monitoring security alerts, identifying suspicious activities, and supporting initial investigation and response to potential security incidents.",
   },
   {
-    name: "Exchange Online",
+    name: "Log Analysis (KQL Basics)",
     description:
-      "Exchange Online is Microsoft’s enterprise cloud messaging platform that delivers mailbox services, mail flow management, calendaring, security controls, and administrative capabilities for business communication environments.",
+      "Analyzing logs using KQL to detect anomalies, troubleshoot issues, and support security investigations.",
   },
   {
-    name: "SharePoint Online",
+    name: "Endpoint Security",
     description:
-      "SharePoint Online is a cloud-based collaboration and content management platform used for document control, intranet solutions, structured information sharing, and team-based productivity across enterprise organizations.",
+      "Understanding endpoint protection strategies, including system hardening, updates, and monitoring to reduce vulnerabilities.",
   },
   {
-    name: "Teams",
+    name: "Windows Troubleshooting",
     description:
-      "Microsoft Teams is a collaboration platform that supports messaging, meetings, calling, file sharing, and integrated teamwork, serving as a central communication layer in modern workplace environments.",
+      "Diagnosing and resolving Windows OS issues, including system errors, performance degradation, and configuration problems.",
   },
   {
     name: "Technical Support",
     description:
-      "Technical support is the practice of diagnosing, resolving, and communicating solutions for system, application, and service issues while maintaining service quality, user confidence, and efficient operational outcomes.",
+      "Providing end-user support in enterprise environments, resolving technical issues efficiently while maintaining strong communication and customer satisfaction.",
+  },
+  {
+    name: "Exchange Online",
+    description:
+      "Managing mailboxes, troubleshooting mail flow issues, and resolving email-related incidents.",
+  },
+  {
+    name: "SharePoint Online",
+    description:
+      "Supporting SharePoint environments by managing permissions, resolving access issues, and enabling collaboration.",
+  },
+  {
+    name: "Microsoft Teams",
+    description:
+      "Troubleshooting Teams-related issues including meetings, calls, and service integrations.",
+  },
+  {
+    name: "Python",
+    description:
+      "Using Python for scripting, automation, and backend logic development to improve efficiency and problem-solving.",
+  },
+  {
+    name: "FastAPI",
+    description:
+      "Developing high-performance APIs with clean architecture and efficient request handling.",
+  },
+  {
+    name: "Next.js",
+    description:
+      "Building responsive and modern web applications with a focus on performance and user experience.",
+  },
+  {
+    name: "Networking Fundamentals",
+    description:
+      "Understanding IP addressing, DNS, VPNs, and firewall concepts in cloud and enterprise environments.",
+  },
+  {
+    name: "Virtualization (Cloud & VM Concepts)",
+    description:
+      "Working with virtual machines and understanding virtualization principles in cloud infrastructure.",
+  },
+  {
+    name: "Authentication Protocols",
+    description:
+      "Understanding OAuth, SAML, and OpenID Connect for secure authentication and authorization.",
   },
 ];
 
@@ -112,18 +173,18 @@ export default function Skills() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+        <InfiniteCarousel ariaLabel="skill" itemWidthClassName="w-auto">
           {skills.map((skill) => (
             <button
               key={skill.name}
               type="button"
               onClick={() => setSelectedSkill(skill)}
-              className="px-4 py-2 rounded-full theme-panel border theme-border text-sm sm:text-base hover:scale-105 hover:border-purple-400 hover:text-purple-400 transition"
+              className="px-4 py-2 rounded-full theme-panel border theme-border text-sm sm:text-base hover:scale-105 hover:border-purple-400 hover:text-purple-400 transition whitespace-nowrap"
             >
               {skill.name}
             </button>
           ))}
-        </div>
+        </InfiniteCarousel>
       </div>
 
       {selectedSkill && (
@@ -141,7 +202,7 @@ export default function Skills() {
               className="absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition flex items-center justify-center"
               aria-label="Close skill details"
             >
-              <span className="text-2xl leading-none">×</span>
+              <span className="text-2xl leading-none">x</span>
             </button>
 
             <div className="mb-5 sm:mb-6">

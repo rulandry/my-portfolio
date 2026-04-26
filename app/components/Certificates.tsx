@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 interface Certificate {
   id: number;
@@ -159,8 +159,34 @@ export default function Certificates() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const firstGroupRef = useRef<HTMLDivElement>(null);
   const pausedRef = useRef(false);
+  const resumeTimerRef = useRef<number | null>(null);
+  const dragStateRef = useRef({
+    active: false,
+    pointerId: -1,
+    startX: 0,
+    startScrollLeft: 0,
+  });
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
+
+  const clearResumeTimer = useCallback(() => {
+    if (resumeTimerRef.current !== null) {
+      window.clearTimeout(resumeTimerRef.current);
+      resumeTimerRef.current = null;
+    }
+  }, []);
+
+  const pauseAutoScroll = useCallback((resumeDelay = 0) => {
+    pausedRef.current = true;
+    clearResumeTimer();
+
+    if (resumeDelay > 0) {
+      resumeTimerRef.current = window.setTimeout(() => {
+        pausedRef.current = false;
+        resumeTimerRef.current = null;
+      }, resumeDelay);
+    }
+  }, [clearResumeTimer]);
 
   const scrollByCard = (direction: "previous" | "next") => {
     const slider = sliderRef.current;
@@ -183,16 +209,12 @@ export default function Certificates() {
       return;
     }
 
-    pausedRef.current = true;
+    pauseAutoScroll(1800);
 
     slider.scrollBy({
       left: direction === "next" ? step : -step,
       behavior: "smooth",
     });
-
-    window.setTimeout(() => {
-      pausedRef.current = false;
-    }, 1200);
   };
 
   useEffect(() => {
@@ -203,13 +225,25 @@ export default function Certificates() {
       return;
     }
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      return;
-    }
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
 
     let frameId = 0;
     let lastTimestamp = 0;
     let loopWidth = 0;
+
+    const syncLoopPosition = () => {
+      if (loopWidth <= 0) {
+        return;
+      }
+
+      if (slider.scrollLeft >= loopWidth * 2) {
+        slider.scrollLeft -= loopWidth;
+      } else if (slider.scrollLeft <= 0) {
+        slider.scrollLeft += loopWidth;
+      }
+    };
 
     const updateLoopWidth = () => {
       const track = firstGroup.parentElement;
@@ -222,19 +256,88 @@ export default function Certificates() {
       const gapValue = styles.columnGap || styles.gap || "0";
       const gap = Number.parseFloat(gapValue);
       loopWidth = firstGroup.offsetWidth + (Number.isNaN(gap) ? 0 : gap);
+
+      if (loopWidth > 0 && slider.scrollLeft === 0) {
+        slider.scrollLeft = loopWidth;
+      }
+
+      syncLoopPosition();
+    };
+
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.pointerType === "mouse" && event.button !== 0) {
+        return;
+      }
+
+      dragStateRef.current = {
+        active: true,
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startScrollLeft: slider.scrollLeft,
+      };
+
+      slider.classList.add("is-dragging");
+      slider.setPointerCapture(event.pointerId);
+      pauseAutoScroll();
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      if (
+        !dragStateRef.current.active ||
+        dragStateRef.current.pointerId !== event.pointerId
+      ) {
+        return;
+      }
+
+      const deltaX = event.clientX - dragStateRef.current.startX;
+      slider.scrollLeft = dragStateRef.current.startScrollLeft - deltaX;
+      syncLoopPosition();
+    };
+
+    const endDrag = (pointerId?: number) => {
+      if (!dragStateRef.current.active) {
+        return;
+      }
+
+      dragStateRef.current.active = false;
+      slider.classList.remove("is-dragging");
+
+      if (
+        pointerId !== undefined &&
+        slider.hasPointerCapture(pointerId)
+      ) {
+        slider.releasePointerCapture(pointerId);
+      }
+
+      syncLoopPosition();
+      pauseAutoScroll(1800);
+    };
+
+    const onPointerUp = (event: PointerEvent) => {
+      endDrag(event.pointerId);
+    };
+
+    const onPointerCancel = (event: PointerEvent) => {
+      endDrag(event.pointerId);
+    };
+
+    const onScroll = () => {
+      syncLoopPosition();
     };
 
     const resizeObserver = new ResizeObserver(() => {
       updateLoopWidth();
-
-      if (loopWidth > 0 && slider.scrollLeft >= loopWidth) {
-        slider.scrollLeft %= loopWidth;
-      }
     });
 
     updateLoopWidth();
     resizeObserver.observe(slider);
     resizeObserver.observe(firstGroup);
+
+    slider.addEventListener("pointerdown", onPointerDown);
+    slider.addEventListener("pointermove", onPointerMove);
+    slider.addEventListener("pointerup", onPointerUp);
+    slider.addEventListener("pointercancel", onPointerCancel);
+    slider.addEventListener("scroll", onScroll, { passive: true });
 
     const animate = (timestamp: number) => {
       if (!lastTimestamp) {
@@ -244,24 +347,29 @@ export default function Certificates() {
       const delta = timestamp - lastTimestamp;
       lastTimestamp = timestamp;
 
-      if (!pausedRef.current && loopWidth > 0) {
+      if (!prefersReducedMotion && !pausedRef.current && loopWidth > 0) {
         slider.scrollLeft += delta * 0.035;
-
-        if (slider.scrollLeft >= loopWidth) {
-          slider.scrollLeft -= loopWidth;
-        }
+        syncLoopPosition();
       }
 
       frameId = window.requestAnimationFrame(animate);
     };
 
-    frameId = window.requestAnimationFrame(animate);
+    if (!prefersReducedMotion) {
+      frameId = window.requestAnimationFrame(animate);
+    }
 
     return () => {
+      clearResumeTimer();
+      slider.removeEventListener("pointerdown", onPointerDown);
+      slider.removeEventListener("pointermove", onPointerMove);
+      slider.removeEventListener("pointerup", onPointerUp);
+      slider.removeEventListener("pointercancel", onPointerCancel);
+      slider.removeEventListener("scroll", onScroll);
       window.cancelAnimationFrame(frameId);
       resizeObserver.disconnect();
     };
-  }, []);
+  }, [clearResumeTimer, pauseAutoScroll]);
 
   return (
     <section id="certificates" className="py-16 sm:py-20 px-4 sm:px-6">
@@ -295,21 +403,31 @@ export default function Certificates() {
 
           <div
             ref={sliderRef}
-            className="certificates-slider relative overflow-hidden"
+            className="certificates-slider relative overflow-x-auto overflow-y-hidden"
             onMouseEnter={() => {
-              pausedRef.current = true;
+              pauseAutoScroll();
             }}
             onMouseLeave={() => {
-              pausedRef.current = false;
+              if (!dragStateRef.current.active) {
+                pauseAutoScroll(1200);
+              }
+            }}
+            onTouchStart={() => {
+              pauseAutoScroll();
+            }}
+            onTouchEnd={() => {
+              if (!dragStateRef.current.active) {
+                pauseAutoScroll(1200);
+              }
             }}
           >
             <div className="certificates-track flex w-max items-stretch gap-5 sm:gap-6">
-              {[0, 1].map((groupIndex) => (
+              {[0, 1, 2].map((groupIndex) => (
                 <div
                   key={groupIndex}
-                  ref={groupIndex === 0 ? firstGroupRef : undefined}
+                  ref={groupIndex === 1 ? firstGroupRef : undefined}
                   className="flex shrink-0 items-stretch gap-5 sm:gap-6"
-                  aria-hidden={groupIndex === 1}
+                  aria-hidden={groupIndex !== 1}
                 >
                   {certificates.map((certificate) => (
                     <article
@@ -418,6 +536,9 @@ export default function Certificates() {
       <style jsx>{`
         .certificates-slider {
           scrollbar-width: none;
+          cursor: grab;
+          touch-action: pan-y pinch-zoom;
+          -webkit-overflow-scrolling: touch;
           mask-image: linear-gradient(
             to right,
             transparent,
@@ -432,6 +553,10 @@ export default function Certificates() {
             black 94%,
             transparent
           );
+        }
+
+        .certificates-slider.is-dragging {
+          cursor: grabbing;
         }
 
         .certificates-slider::-webkit-scrollbar {
@@ -456,16 +581,12 @@ export default function Certificates() {
             visibility 0.25s ease,
             transform 0.25s ease,
             box-shadow 0.25s ease;
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
         }
 
         .certificates-carousel:hover .certificate-arrow,
         .certificates-carousel:focus-within .certificate-arrow {
           opacity: 1;
           visibility: visible;
-          pointer-events: auto;
         }
 
         .certificate-arrow:hover {
@@ -556,7 +677,19 @@ export default function Certificates() {
 
         @media (max-width: 639px) {
           .certificate-arrow {
-            display: none;
+            width: 2.35rem;
+            height: 2.35rem;
+            font-size: 1.1rem;
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .certificate-arrow-left {
+            left: 0.25rem;
+          }
+
+          .certificate-arrow-right {
+            right: 0.25rem;
           }
         }
       `}</style>
