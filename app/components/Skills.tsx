@@ -82,7 +82,7 @@ const skills: SkillItem[] = [
   {
     name: "Windows Troubleshooting",
     description:
-      "Diagnosing and resolving Windows OS issues, including system errors, performance degradation, configuration problems, and user profile issues. Includes troubleshooting hardware peripherals such as printers, scanners, USB devices, and connectivity-related issues to ensure stable end-user environments.",
+      "Diagnosing and resolving Windows OS issues, including system errors, performance degradation, configuration problems, and user profile issues. Includes troubleshooting hardware peripherals such as printers, scanners, and connectivity-related issues to ensure stable end-user environments.",
   },
   {
     name: "Technical Support",
