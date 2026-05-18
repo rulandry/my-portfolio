@@ -169,6 +169,7 @@ export default function Certificates() {
   const pausedRef = useRef(false);
   const resumeTimerRef = useRef<number | null>(null);
   const dragStateRef = useRef({
+    pressed: false,
     active: false,
     pointerId: -1,
     startX: 0,
@@ -298,37 +299,51 @@ export default function Certificates() {
       }
 
       dragStateRef.current = {
-        active: true,
+        pressed: true,
+        active: false,
         pointerId: event.pointerId,
         startX: event.clientX,
         startScrollLeft: slider.scrollLeft,
       };
-
-      slider.classList.add("is-dragging");
-      slider.setPointerCapture(event.pointerId);
-      pauseAutoScroll();
     };
 
     const onPointerMove = (event: PointerEvent) => {
       if (
-        !dragStateRef.current.active ||
+        !dragStateRef.current.pressed ||
         dragStateRef.current.pointerId !== event.pointerId
       ) {
         return;
       }
 
       const deltaX = event.clientX - dragStateRef.current.startX;
+
+      if (!dragStateRef.current.active) {
+        if (Math.abs(deltaX) < 8) {
+          return;
+        }
+
+        dragStateRef.current.active = true;
+        slider.classList.add("is-dragging");
+        slider.setPointerCapture(event.pointerId);
+        pauseAutoScroll();
+      }
+
       slider.scrollLeft = dragStateRef.current.startScrollLeft - deltaX;
       syncLoopPosition();
     };
 
     const endDrag = (pointerId?: number) => {
-      if (!dragStateRef.current.active) {
+      if (!dragStateRef.current.pressed) {
         return;
       }
 
+      const wasDragging = dragStateRef.current.active;
+      dragStateRef.current.pressed = false;
       dragStateRef.current.active = false;
-      slider.classList.remove("is-dragging");
+
+      if (wasDragging) {
+        slider.classList.remove("is-dragging");
+      }
 
       if (
         pointerId !== undefined &&
@@ -337,8 +352,10 @@ export default function Certificates() {
         slider.releasePointerCapture(pointerId);
       }
 
-      syncLoopPosition();
-      pauseAutoScroll(1800);
+      if (wasDragging) {
+        syncLoopPosition();
+        pauseAutoScroll(1800);
+      }
     };
 
     const onPointerUp = (event: PointerEvent) => {
