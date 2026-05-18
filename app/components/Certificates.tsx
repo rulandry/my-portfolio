@@ -177,6 +177,26 @@ export default function Certificates() {
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certificate | null>(null);
 
+  useEffect(() => {
+    if (!selectedCertificate) {
+      return;
+    }
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedCertificate(null);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [selectedCertificate]);
+
   const clearResumeTimer = useCallback(() => {
     if (resumeTimerRef.current !== null) {
       window.clearTimeout(resumeTimerRef.current);
@@ -653,6 +673,7 @@ export default function Certificates() {
           padding: 1rem;
           background: rgba(0, 0, 0, 0.72);
           backdrop-filter: blur(6px);
+          animation: certificate-preview-fade 0.2s ease-out;
         }
 
         .certificate-preview-panel {
@@ -660,6 +681,7 @@ export default function Certificates() {
           width: min(100%, 860px);
           max-height: 90vh;
           overflow: auto;
+          animation: certificate-preview-zoom 0.2s ease-out;
         }
 
         .certificate-preview-image {
@@ -676,10 +698,35 @@ export default function Certificates() {
           text-transform: uppercase;
         }
 
+        @keyframes certificate-preview-fade {
+          from {
+            opacity: 0;
+          }
+
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes certificate-preview-zoom {
+          from {
+            opacity: 0;
+            transform: scale(0.96);
+          }
+
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .certificates-card,
-          .certificates-card :global(img) {
+          .certificates-card :global(img),
+          .certificate-preview,
+          .certificate-preview-panel {
             transition: none;
+            animation: none;
           }
         }
 
