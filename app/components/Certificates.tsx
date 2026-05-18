@@ -130,6 +130,14 @@ const certificates: Certificate[] = [
     kind: "certificate",
   },
   {
+    id: 18,
+    title: "CyberSec Def Analyst Certificate",
+    issuer: "Cisco",
+    issueDate: "17 May 2026",
+    image: "/certificates/CyberSec_Def_Analyst.png",
+    kind: "certificate",
+  },
+  {
     id: 6,
     title: "Introduction to Internet of Things Certificate",
     issuer: "Cisco",
