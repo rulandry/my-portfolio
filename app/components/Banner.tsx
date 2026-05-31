@@ -83,7 +83,7 @@ export default function Banner() {
           <div className="flex-1 space-y-5 sm:space-y-6 text-center lg:text-left order-2 lg:order-1 mt-2 sm:mt-0">
             <div className="hidden lg:inline-block relative">
               <p className="text-lg">
-                Hello! I Am{" "}
+                Hello! My name is{" "}
                 <span className="text-purple-400">Landry Rugomoka</span>
               </p>
             </div>
@@ -122,7 +122,7 @@ export default function Banner() {
           <p className="text-sm sm:text-base lg:text-xl theme-muted tracking-wide flex flex-wrap items-center justify-center lg:justify-start gap-2">
             <span>Currently working in</span>
             <span className="text-blue-400 font-semibold">
-              Azure and Microsoft cloud support
+              Azure/Entra ID and Microsoft cloud support
             </span>
           </p>
 

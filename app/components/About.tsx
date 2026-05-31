@@ -15,24 +15,23 @@ export default function About() {
 
           <p className="text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto leading-relaxed px-2 sm:px-0">
             I&apos;m an{" "}
-            <span className="text-purple-400">Azure Support Engineer</span> with
-            experience in Microsoft 365, Microsoft Entra ID, Windows
-            troubleshooting, and cloud-based user support.
+            <span className="text-purple-400">Azure Support Engineer L-2</span> passionate 
+            about cloud technologies, identity management, and cybersecurity. I specialize in 
+            supporting Microsoft 365 and Microsoft Entra ID environments, helping organizations 
+            resolve technical challenges and maintain secure, reliable cloud services.
           </p>
 
           <p className="text-sm sm:text-base lg:text-lg max-w-4xl mx-auto theme-muted leading-relaxed px-2 sm:px-0">
-            My background combines technical support, identity and access
-            troubleshooting, and customer-focused problem solving. I enjoy
-            helping organizations keep their environments secure, functional,
-            and efficient while continuing to grow in cloud engineering and
-            cybersecurity.
+            My experience spans technical support, troubleshooting, user administration, and 
+            cloud-based collaboration platforms, with a strong focus on delivering excellent 
+            customer experiences. I enjoy tackling complex problems, learning new technologies, 
+            and turning technical challenges into practical solutions.
           </p>
 
           <p className="text-sm sm:text-base lg:text-lg max-w-4xl mx-auto theme-muted leading-relaxed px-2 sm:px-0">
-            I am especially interested in opportunities where I can contribute
-            to cloud support, identity management, security operations, and
-            modern workplace technologies while building impactful and reliable
-            solutions.
+            Currently, I&apos;m expanding my expertise in cloud engineering, cloud security, and 
+            security operations while seeking opportunities to contribute to innovative teams and 
+            impactful technology projects.
           </p>
         </div>
 
