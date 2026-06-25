@@ -1,8 +1,8 @@
 # Landry Portfolio
 
-Welcome to my personal portfolio project! This website showcases my background, projects, technical skills, and professional interests in Azure support, Microsoft 365, cloud technologies, identity management, and security-focused growth.
+Welcome to my personal portfolio project. This website showcases my background, projects, technical skills, professional experience, certificates, and interests in Azure support, Microsoft 365, cloud technologies, identity management, and cybersecurity.
 
-Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** backend, the portfolio is more than a static site - it includes a live contact form, theme switching, interactive skill explanations, and responsive design for desktop and mobile users.
+Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** backend, the portfolio includes responsive UI, theme switching, interactive skills, sliding experience and certificate sections, certificate image previews, and contact options for visitors.
 
 ## Live Project
 
@@ -12,23 +12,25 @@ Built with **Next.js**, **TypeScript**, **Tailwind CSS**, and a **FastAPI** back
 
 # Features
 
-This portfolio includes both a polished frontend and a working backend integration.
+This portfolio combines a polished frontend with backend contact-form logic and interactive portfolio sections.
 
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Light & Dark Mode**: Theme toggle for better user experience
-- **Interactive Skills Section**: Clickable skills with centered modal explanations
+- **Responsive Design**: Optimized for desktop, tablet, mobile, and touch-enabled devices
+- **Light & Dark Mode**: Theme toggle for a flexible viewing experience
+- **Interactive Skills Section**: Skills displayed in a horizontal carousel with clickable modal explanations
+- **Sliding Experience Section**: Experience cards displayed in a single-row carousel with touch, mouse drag, and arrow navigation
+- **Certificates and Badges**: Certificate carousel with local images, modal previews, keyboard close support, and mobile-friendly interaction
 - **Project Showcase**: Featured personal projects with descriptions and technologies used
-- **Live Contact Form**: Connected to a FastAPI backend and Gmail delivery
-- **Phone QR Contact**: Scan-to-call modal for mobile convenience
-- **Accessible Footer Tooltips**: Hover and keyboard-focus labels for footer icons
-- **Modern UI**: Clean layout with a strong purple/dark visual identity
-- **Backend API Integration**: FastAPI-powered contact handling with validation and spam protection
+- **Contact Options**: Email link, CV download, phone QR modal, GitHub, and LinkedIn links
+- **Accessible Tooltips**: Hover and keyboard-focus labels for icon-based navigation and footer actions
+- **Backend API Integration**: FastAPI-powered contact handling with validation and preserved email-delivery logic
+- **Modern UI**: Clean, responsive interface using the existing design system and theme variables
 
 ---
 
 # Tech Stack
 
 ## Frontend
+
 - Next.js
 - React
 - TypeScript
@@ -37,6 +39,7 @@ This portfolio includes both a polished frontend and a working backend integrati
 - qrcode.react
 
 ## Backend
+
 - FastAPI
 - Python
 - Uvicorn
@@ -44,6 +47,7 @@ This portfolio includes both a polished frontend and a working backend integrati
 - Python Dotenv
 
 ## Deployment
+
 - Vercel (Frontend)
 - Render (Backend)
 
@@ -54,11 +58,36 @@ This portfolio includes both a polished frontend and a working backend integrati
 The portfolio currently includes:
 
 - **Hero Section**: Introduction, animated typing effect, and profile image
-- **About Me**: Overview of my background and career direction
-- **Skills**: Interactive skill list with explanations in a modal
-- **Experience**: Work experience and technical focus areas
+- **About Me**: Overview of my background, focus areas, and career direction
+- **Skills**: Interactive skill carousel with detailed modal explanations
+- **Experience**: Technical experience cards in a horizontal carousel
+- **Certificates and Badges**: Certificate carousel with clickable image previews
 - **Projects**: Featured projects including Personal Vault App and LoanLux
-- **Contact**: Working contact form, email link, CV download, phone QR, GitHub, and LinkedIn
+- **Contact**: Contact form notice, email link, CV download, phone QR, GitHub, and LinkedIn
+
+---
+
+# Run Locally
+
+Install dependencies:
+
+```powershell
+npm.cmd install
+```
+
+Start the development server:
+
+```powershell
+npm.cmd run dev
+```
+
+Open the app locally:
+
+```text
+http://localhost:3000
+```
+
+If PowerShell blocks `npm`, use `npm.cmd` as shown above.
 
 ---
 
@@ -76,13 +105,14 @@ LoanLux is a secure loan management application built to help users track loans,
 
 # Contact Form Notes
 
-The contact form is fully implemented in the frontend and connected to backend logic prepared for email delivery.
+The contact form frontend and backend logic are preserved in the project. Direct form-to-email delivery may be limited on the current free hosting setup because of outbound email restrictions from the backend host.
 
-At the moment, direct form-to-email sending is temporarily unavailable on the current free hosting setup because of outbound email restrictions on the backend hosting provider.
+The live site provides direct email and phone contact options so visitors can still reach me reliably.
 
-As a temporary solution, the site displays a notice encouraging visitors to contact me directly by email or phone. The original backend submission logic is still preserved in the codebase and can be re-enabled later.
+---
 
-## Disclaimer
+# Disclaimer
 
-This project is part of my **professional portfolio** and reflects my practical work in frontend development, backend integration, UI design, and building thoughtful, security-conscious applications.
-While it is suitable for showcasing real skills and project experience, it should still receive additional security hardening, testing, and infrastructure review before being used for highly sensitive production workloads.
+This project is part of my **professional portfolio** and reflects practical work in frontend development, backend integration, UI design, cloud support, identity, and security-conscious application building.
+
+It is suitable for showcasing real skills and project experience, but any production use involving sensitive workloads should include additional security hardening, testing, monitoring, and infrastructure review.
