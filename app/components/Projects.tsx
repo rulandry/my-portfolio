@@ -78,10 +78,8 @@ const featuredProjects: Project[] = [
 ];
 
 function MigrationWarningDialog({
-  projectUrl,
   onClose,
 }: {
-  projectUrl: string;
   onClose: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -103,34 +101,24 @@ function MigrationWarningDialog({
         id="migration-warning-title"
         className="text-2xl font-bold leading-tight text-purple-400 sm:text-3xl"
       >
-        Project Migration in Progress
+        Project Under Migration
       </h3>
       <p
         id="migration-warning-description"
         className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base"
       >
-        This project is currently being migrated to a new hosting
-        infrastructure. During this transition, the live application may be
-        temporarily unavailable. Thank you for your patience and understanding.
+        This project is currently under migration and may be temporarily
+        unavailable. Thank you for your patience and understanding.
       </p>
-      <div className="mt-7 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+      <div className="mt-7 flex justify-end">
         <button
           type="button"
           autoFocus
-          onClick={onClose}
+          onClick={() => dialogRef.current?.close()}
           className="rounded-xl border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:text-base"
         >
           Cancel
         </button>
-        <a
-          href={projectUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={onClose}
-          className="rounded-xl bg-purple-600 px-5 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-purple-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:text-base"
-        >
-          Continue to Project
-        </a>
       </div>
     </dialog>
   );
@@ -138,13 +126,13 @@ function MigrationWarningDialog({
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [migrationProjectUrl, setMigrationProjectUrl] = useState<string | null>(null);
+  const [isMigrationWarningOpen, setIsMigrationWarningOpen] = useState(false);
 
   useEffect(() => {
     if (!selectedProject) return;
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && !isMigrationWarningOpen) {
         setSelectedProject(null);
       }
     };
@@ -156,7 +144,7 @@ export default function Projects() {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
     };
-  }, [selectedProject]);
+  }, [selectedProject, isMigrationWarningOpen]);
 
   return (
     <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6">
@@ -334,7 +322,7 @@ export default function Projects() {
               <div className="pt-2">
                 <button
                   type="button"
-                  onClick={() => setMigrationProjectUrl(selectedProject.projectUrl)}
+                  onClick={() => setIsMigrationWarningOpen(true)}
                   className="inline-flex items-center gap-2 rounded-xl bg-purple-600 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-purple-500 sm:text-base"
                 >
                   {selectedProject.projectCtaLabel}
@@ -354,10 +342,9 @@ export default function Projects() {
           </div>
         </div>
       )}
-      {migrationProjectUrl && (
+      {isMigrationWarningOpen && (
         <MigrationWarningDialog
-          projectUrl={migrationProjectUrl}
-          onClose={() => setMigrationProjectUrl(null)}
+          onClose={() => setIsMigrationWarningOpen(false)}
         />
       )}
     </section>
