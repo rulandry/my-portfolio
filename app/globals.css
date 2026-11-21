@@ -8,6 +8,16 @@ html {
   --panel-strong: rgba(255, 255, 255, 0.92);
   --border: rgba(17, 24, 39, 0.1);
   --header: rgba(255, 255, 255, 0.8);
+  --modal: #ffffff;
+  --modal-section: rgba(17, 24, 39, 0.04);
+  --modal-overlay: rgba(17, 24, 39, 0.58);
+  --modal-close: rgba(17, 24, 39, 0.05);
+  --modal-hover: rgba(17, 24, 39, 0.09);
+  --modal-heading: #7e22ce;
+  --modal-eyebrow: #6b21a8;
+  --success-text: #166534;
+  --info-text: #854d0e;
+  --error-text: #b91c1c;
   color-scheme: light;
 }
 
@@ -19,6 +29,16 @@ html.dark {
   --panel-strong: rgba(255, 255, 255, 0.08);
   --border: rgba(255, 255, 255, 0.1);
   --header: rgba(17, 7, 32, 0.8);
+  --modal: #12091f;
+  --modal-section: rgba(255, 255, 255, 0.05);
+  --modal-overlay: rgba(0, 0, 0, 0.8);
+  --modal-close: rgba(255, 255, 255, 0.05);
+  --modal-hover: rgba(255, 255, 255, 0.1);
+  --modal-heading: #c084fc;
+  --modal-eyebrow: rgba(216, 180, 254, 0.8);
+  --success-text: #86efac;
+  --info-text: #fde68a;
+  --error-text: #fca5a5;
   color-scheme: dark;
 }
 
@@ -30,6 +50,16 @@ html.light {
   --panel-strong: rgba(255, 255, 255, 0.92);
   --border: rgba(17, 24, 39, 0.1);
   --header: rgba(255, 255, 255, 0.8);
+  --modal: #ffffff;
+  --modal-section: rgba(17, 24, 39, 0.04);
+  --modal-overlay: rgba(17, 24, 39, 0.58);
+  --modal-close: rgba(17, 24, 39, 0.05);
+  --modal-hover: rgba(17, 24, 39, 0.09);
+  --modal-heading: #7e22ce;
+  --modal-eyebrow: #6b21a8;
+  --success-text: #166534;
+  --info-text: #854d0e;
+  --error-text: #b91c1c;
   color-scheme: light;
 }
 
@@ -86,4 +116,59 @@ img {
 
 .theme-header {
   background: var(--header);
+}
+
+.theme-modal {
+  background: var(--modal);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.theme-modal::backdrop {
+  background: var(--modal-overlay);
+  backdrop-filter: blur(12px);
+}
+
+.theme-modal-section {
+  background: var(--modal-section);
+  border-color: var(--border);
+}
+
+.theme-modal-overlay {
+  background: var(--modal-overlay);
+}
+
+.theme-modal-close {
+  background: var(--modal-close);
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+.theme-modal-close:hover {
+  background: var(--modal-hover);
+  color: var(--foreground);
+}
+
+.theme-modal-heading {
+  color: var(--modal-heading);
+}
+
+.theme-modal-eyebrow {
+  color: var(--modal-eyebrow);
+}
+
+.theme-input::placeholder {
+  color: var(--muted);
+}
+
+.theme-status-success {
+  color: var(--success-text);
+}
+
+.theme-status-info {
+  color: var(--info-text);
+}
+
+.theme-status-error {
+  color: var(--error-text);
 }

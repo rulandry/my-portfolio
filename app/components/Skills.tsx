@@ -189,34 +189,34 @@ export default function Skills() {
 
       {selectedSkill && (
         <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-md px-4 sm:px-6"
+          className="theme-modal-overlay fixed inset-0 z-[999] flex items-center justify-center backdrop-blur-md px-4 sm:px-6"
           onClick={() => setSelectedSkill(null)}
         >
           <div
-            className="relative w-full max-w-3xl rounded-3xl border border-white/15 bg-[#12091f]/95 shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 sm:p-8 lg:p-10"
+            className="theme-modal relative w-full max-w-3xl rounded-3xl border shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 sm:p-8 lg:p-10"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setSelectedSkill(null)}
-              className="absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition flex items-center justify-center"
+              className="theme-modal-close absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full border transition flex items-center justify-center"
               aria-label="Close skill details"
             >
               <span className="text-2xl leading-none">x</span>
             </button>
 
             <div className="mb-5 sm:mb-6">
-              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-purple-300/80 mb-3">
+              <p className="theme-modal-eyebrow text-xs sm:text-sm uppercase tracking-[0.2em] mb-3">
                 Skill Overview
               </p>
 
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-400 leading-tight">
+              <h3 className="theme-modal-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                 {selectedSkill.name}
               </h3>
             </div>
 
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-              <p className="text-white/90 text-base sm:text-lg lg:text-xl leading-relaxed">
+            <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+              <p className="theme-muted text-base sm:text-lg lg:text-xl leading-relaxed">
                 {selectedSkill.description}
               </p>
             </div>

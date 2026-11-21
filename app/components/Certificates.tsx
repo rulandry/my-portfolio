@@ -540,7 +540,7 @@ export default function Certificates() {
           }}
         >
           <div
-            className="certificate-preview-panel theme-panel border theme-border rounded-2xl p-4 sm:p-5"
+            className="certificate-preview-panel theme-modal border rounded-2xl p-4 sm:p-5"
             onClick={(event) => {
               event.stopPropagation();
             }}
@@ -556,7 +556,7 @@ export default function Certificates() {
               x
             </button>
 
-            <div className="certificate-preview-image relative overflow-hidden rounded-xl">
+            <div className="certificate-preview-image theme-modal-section relative overflow-hidden rounded-xl">
               <Image
                 src={selectedCertificate.image}
                 alt={selectedCertificate.title}
@@ -688,7 +688,7 @@ export default function Certificates() {
           align-items: center;
           justify-content: center;
           padding: 1rem;
-          background: rgba(0, 0, 0, 0.72);
+          background: var(--modal-overlay);
           backdrop-filter: blur(6px);
           animation: certificate-preview-fade 0.2s ease-out;
         }
@@ -699,10 +699,6 @@ export default function Certificates() {
           max-height: 90vh;
           overflow: auto;
           animation: certificate-preview-zoom 0.2s ease-out;
-        }
-
-        .certificate-preview-image {
-          background: rgba(255, 255, 255, 0.96);
         }
 
         .certificate-preview-close {

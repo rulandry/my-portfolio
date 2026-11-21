@@ -95,17 +95,17 @@ function MigrationWarningDialog({
       onClose={onClose}
       aria-labelledby="migration-warning-title"
       aria-describedby="migration-warning-description"
-      className="m-auto w-[calc(100%-2rem)] max-w-lg rounded-3xl border border-white/15 bg-[#12091f] p-6 text-white shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop:bg-black/80 backdrop:backdrop-blur-md sm:p-8"
+      className="theme-modal m-auto w-[calc(100%-2rem)] max-w-lg rounded-3xl border p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] sm:p-8"
     >
       <h3
         id="migration-warning-title"
-        className="text-2xl font-bold leading-tight text-purple-400 sm:text-3xl"
+        className="theme-modal-heading text-2xl font-bold leading-tight sm:text-3xl"
       >
         Project Under Migration
       </h3>
       <p
         id="migration-warning-description"
-        className="mt-4 text-sm leading-relaxed text-white/90 sm:text-base"
+        className="theme-muted mt-4 text-sm leading-relaxed sm:text-base"
       >
         This project is currently under migration and may be temporarily
         unavailable. Thank you for your patience and understanding.
@@ -115,7 +115,7 @@ function MigrationWarningDialog({
           type="button"
           autoFocus
           onClick={() => dialogRef.current?.close()}
-          className="rounded-xl border border-white/15 px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:text-base"
+          className="theme-modal-close rounded-xl border px-5 py-3 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 sm:text-base"
         >
           Cancel
         </button>
@@ -242,65 +242,65 @@ export default function Projects() {
 
       {selectedProject && (
         <div
-          className="fixed inset-0 z-999 flex items-center justify-center bg-black/80 backdrop-blur-md px-4 sm:px-6"
+          className="theme-modal-overlay fixed inset-0 z-999 flex items-center justify-center backdrop-blur-md px-4 sm:px-6"
           onClick={() => setSelectedProject(null)}
         >
           <div
-            className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border border-white/15 bg-[#12091f]/95 shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 sm:p-8 lg:p-10"
+            className="theme-modal relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl border shadow-[0_20px_80px_rgba(0,0,0,0.45)] p-6 sm:p-8 lg:p-10"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               type="button"
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition flex items-center justify-center"
+              className="theme-modal-close absolute top-4 right-4 sm:top-5 sm:right-5 w-10 h-10 rounded-full border transition flex items-center justify-center"
               aria-label="Close project details"
             >
               <span className="text-2xl leading-none">x</span>
             </button>
 
             <div className="mb-6">
-              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-purple-300/80 mb-3">
+              <p className="theme-modal-eyebrow text-xs sm:text-sm uppercase tracking-[0.2em] mb-3">
                 Project Overview
               </p>
 
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-purple-400 leading-tight">
+              <h3 className="theme-modal-heading text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">
                 {selectedProject.title}
               </h3>
             </div>
 
             <div className="space-y-5">
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3">
+              <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3">
                   What this app is about
                 </h4>
-                <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                <p className="theme-muted text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.overview}
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3">
+              <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3">
                   Who it is for
                 </h4>
-                <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                <p className="theme-muted text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.audience}
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3">
+              <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3">
                   Problem it helps solve
                 </h4>
-                <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                <p className="theme-muted text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.problem}
                 </p>
               </div>
 
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3">
+              <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3">
                   Main features
                 </h4>
-                <ul className="space-y-3 text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                <ul className="theme-muted space-y-3 text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.features.map((feature) => (
                     <li key={feature} className="flex gap-3">
                       <span className="text-purple-400 mt-1">•</span>
@@ -310,11 +310,11 @@ export default function Projects() {
                 </ul>
               </div>
 
-              <div className="rounded-2xl bg-white/5 border border-white/10 p-5 sm:p-6">
-                <h4 className="text-lg sm:text-xl font-semibold text-white mb-3">
+              <div className="theme-modal-section rounded-2xl border p-5 sm:p-6">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3">
                   Why it matters
                 </h4>
-                <p className="text-white/90 text-sm sm:text-base lg:text-lg leading-relaxed">
+                <p className="theme-muted text-sm sm:text-base lg:text-lg leading-relaxed">
                   {selectedProject.details.value}
                 </p>
               </div>
